@@ -20,7 +20,7 @@ public class client implements Runnable {
 	
 	@Override
 	public void run() {	
-		byte[] img = new byte[(Server.WIDTH*Server.HEIGHT*4)];
+		byte[] img = new byte[(Server.WIDTH*Server.HEIGHT*4*2)];
 		System.out.println("Receive started...");
 		byte[] receiveData = new byte[1514];
 		receivePacket = new DatagramPacket(receiveData, receiveData.length);
@@ -72,7 +72,7 @@ public class client implements Runnable {
 		//img = new byte [Server.WIDTH*Server.HEIGHT*3];
 		try {
 			clientSocket = new DatagramSocket(4002);
-			clientSocket.setSoTimeout(30);
+			clientSocket.setSoTimeout(100);//30
 		} catch (SocketException ex) {
 			ex.printStackTrace();
 		}
